@@ -41,8 +41,9 @@ const Header = () => {
   return (
     <div className="w-full flex items-center justify-between px-8 py-4 relative z-50">
       {/* LEFT */}
-      <div className="flex items-center gap-3">
-        <img src={logo} className="w-[80px] md:w-[115px]" />
+      <div className="flex items-center gap-2">
+        <div ><img src={logo} className="w-[80px] md:w-[115px]" /></div>
+        
 
         <div className="hidden md:flex gap-8">
           {menu.map((item, i) => (
@@ -52,7 +53,7 @@ const Header = () => {
           ))}
         </div>
 
-        <div className="flex md:hidden gap-5">
+        <div className="flex md:hidden gap-3">
   {menu.map((item, i) => (
     <Link key={i} to={item.path}>
       {item.name === "SEARCH" ? (
