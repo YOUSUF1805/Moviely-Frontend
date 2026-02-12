@@ -39,9 +39,9 @@ const Header = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-5">
+    <div className="w-full flex items-center justify-between px-8 py-4 relative z-50">
       {/* LEFT */}
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-3">
         <img src={logo} className="w-[80px] md:w-[115px]" />
 
         <div className="hidden md:flex gap-8">
@@ -53,22 +53,32 @@ const Header = () => {
         </div>
 
         <div className="flex md:hidden gap-5">
-          {menu.map((item, i) => (
-            <Link key={i} to={item.path}>
-              <HeaderList name="" Icon={item.icon} />
-            </Link>
-          ))}
+  {menu.map((item, i) => (
+    <Link key={i} to={item.path}>
+      {item.name === "SEARCH" ? (
+        // Keep Search Icon
+        <item.icon className="text-white text-xl" />
+      ) : (
+        // Show First Letter for Others
+        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-semibold text-sm hover:bg-white/20 transition">
+          {item.name.charAt(0)}
         </div>
+      )}
+    </Link>
+  ))}
+</div>
+
       </div>
 
       {/* RIGHT */}
-      <div>
+      <div className="flex items-center">
         {!isLoggedIn ? (
           <Link
             to="/login"
             className="border border-white px-4 py-1 rounded-lg text-white"
           >
-            Login
+            <span className="hidden md:inline">Login</span>
+            <span className="md:hidden">Log</span>
           </Link>
         ) : (
          <div className="relative">
